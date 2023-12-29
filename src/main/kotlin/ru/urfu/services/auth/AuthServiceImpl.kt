@@ -60,7 +60,7 @@ class AuthServiceImpl(
         logger.info("Login successful for user: ${user.username}")
 
         return LoginResult.LoginSuccess(
-            redirectUrl = "http://localhost:8080/test",
+            redirectUrl = "http://app.korvalanni:8080/test",
             token = token
         )
     }

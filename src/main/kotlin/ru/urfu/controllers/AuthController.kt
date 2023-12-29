@@ -49,7 +49,7 @@ class AuthController(
                 is RegistrationResult.RegistrationFailed -> return@coroutineToMono ResponseEntity.badRequest().body(result)
                 is RegistrationResult.RegistrationSuccess -> let {
                     ResponseEntity.status(HttpStatus.OK).body(mapOf(
-                        "redirectUrl" to "http://localhost:8080/login?appId=${result.appId}"
+                        "redirectUrl" to "http://app.korvalanni:8080/login?appId=${result.appId}"
                     ))
                 }
             }
