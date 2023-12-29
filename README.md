@@ -1,33 +1,31 @@
 # Student-Auth-Service
 Сервис авторизации для проектного практикума
+Для сценариев логина и регистрации потребуется id проекта
+- пользователь привязан к конкретному проекту
+1) Завести проект или проверить его существование по id
+   ![image](pics/create_project.png)
+   ![image](pics/get_project.png)
+
 # 1.Сценарий регистрации
-1) Перейти по ссылке:
-2) Ввести имя пользователя и пароль
-3) Нажать кнопку "Зарегистрироваться"
-
-![image](https://github.com/korvalanni/Student-Auth-Service/assets/114663096/614a4ee8-ffab-4be6-950a-c6f8b787f8b5)
-
+1) Редиректнуть пользователя на страницу регистрации http://app.korvalanni:8080/registration?appId={id}
+![image](pics/reg_forms.png)
+2)Проверить статус пользователя с помощью
+![image](pics/registration.png)
 
 # 2.Сценарий логина
-1) Перейти по ссылке:
-2) Ввести имя пользователя и пароль
-3) Нажать кнопку "Войти"
+1) Редиректнуть пользователя на страницу логина http://app.korvalanni:8080/login?appId={id}
+![image](pics/reg_forms.png)
+2)Проверить статус пользователя с помощью
+![image](pics/login.png)
+3) При успешной авторизации получить пару access и refresh токенов
 
-![image](https://github.com/korvalanni/Student-Auth-Service/assets/114663096/f38ffac4-fee8-4aa0-b3ff-8886a83d64ce)
+# 3. Механизм инвалидации и обновления access токенов
+![image](pics/token_inv.png)
+![image](pics/token_refresh.png)
 
+# 4. CRUD операции над пользователем 
+админка для разработчика проекта
+![image](pics/user_crud.png)
+# 5. CRD операции над проектом
+![image](pics/project_crud.png)
 
-# 3.CRUD операции над пользователем
-1) Создание пользователя:
-POST-запрос по ссылке: /user
-2) Просмотр пользователя:
-GET-запрос по ссылке: /user/{имя пользователя}
-Возвращает имя и пароль пользователя.
-
-![image](https://github.com/korvalanni/Student-Auth-Service/assets/114663096/9fd8ed22-ab65-4ad0-a46a-8232ded2e1e4)
-
-3) Обновление пользователя:
-PUT-запрос по ссылке: /{имя пользователя}
-4) Удаление пользователя:
-DELETE-запрос по ссылке: /{имя пользователя}
-5) Назначить проект пользователю:
-POST-запрос по ссылке: /project/{ID проекта}
