@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Spring Security Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 90%;
+        }
+        button[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <div th:if="${message}">
+        <div th:text="${message}"></div>
+    </div>
+    <form>
+        <div class="form-field">
+            <label> Имя пользователя : <input type="text" name="userName" id="username"/> </label>
+        </div>
+        <div class="form-field">
+            <label> Пароль: <input type="password" name="password" id="password"/> </label>
+        </div>
+        <input type="hidden" name="projectId" th:value="${appId}" id="appId"/>
+        <div class="form-field">
+            <button type="button" onclick="submitForm()">Зарегистрироваться</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function submitForm() {
+        // Serialize form data to JSON
+        const formData = {
+            login: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+            projectId: document.getElementById("appId").value
+            // Add more fields as needed
+        };
+
+        // Send JSON data to the server using AJAX
+        fetch("/auth/registration", {
+            method: "POST",
+            redirect: 'manual',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (response.status == 401) {
+                throw Exception(response.json())
+            }
+            console.log(response.status)
+            return response.json()
+        })
+        .then(result => {
+            console.log(result)
+            window.location.href = result.redirectUrl
+        })
+        .catch(error => {
+            console.log(error)
+            window.location.href = "/login?appId=" + formData.projectId + "&error=error-auth-need-retry"
+        });
+    }
+</script>
+</body>
+</html>
