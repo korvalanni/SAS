@@ -17,7 +17,7 @@ application {
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "ru.urfu.ApiApp"
+        attributes["Main-Class"] = "ru.urfu.ApiAppKt"
     }
 }
 
