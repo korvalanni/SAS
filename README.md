@@ -7,13 +7,13 @@
    ![image](pics/get_project.png)
 
 # 1.Сценарий регистрации
-1) Редиректнуть пользователя на страницу регистрации http://app.korvalanni:8080/registration?appId={id}
+1) Редиректнуть пользователя на страницу регистрации https://app.korvalanni:8080/registration?appId={id}
 ![image](pics/reg_forms.png)
 2)Проверить статус пользователя с помощью
 ![image](pics/registration.png)
 
 # 2.Сценарий логина
-1) Редиректнуть пользователя на страницу логина http://app.korvalanni:8080/login?appId={id}
+1) Редиректнуть пользователя на страницу логина https://app.korvalanni:8080/login?appId={id}
 ![image](pics/reg_forms.png)
 2)Проверить статус пользователя с помощью
 ![image](pics/login.png)
