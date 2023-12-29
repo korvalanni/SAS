@@ -7,22 +7,22 @@ plugins {
     kotlin("jvm") version "1.9.21"
     kotlin("plugin.spring") version "1.9.21"
     kotlin("plugin.jpa") version "1.9.21"
-    id("com.google.cloud.tools.jib") version "2.3.0"
+    //id("com.google.cloud.tools.jib") version "2.3.0"
     application
 }
 
 application {
-    mainClass.set("your.package.MainClass") // Replace with your main class
+    mainClass.set("ru.urfu.ApiApp")
 }
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "your.package.MainClass" // Replace with your main class
+        attributes["Main-Class"] = "ru.urfu.ApiApp"
     }
 }
 
 allprojects {
-    group = "com.yapp"
+    group = "ru.urfu"
     version = "1.0.0"
 
     repositories {
