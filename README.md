@@ -19,7 +19,7 @@
 ![image](pics/login.png)
 3) При успешной авторизации получить пару access и refresh токенов
 
-# 3. Механизм инвалидации и обновления access токенов
+# 3. Механизм инвалидации и обновления токенов
 ![image](pics/token_inv.png)
 ![image](pics/token_refresh.png)
 
